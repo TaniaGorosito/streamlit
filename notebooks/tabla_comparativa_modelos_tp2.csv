@@ -1,0 +1,5 @@
+Modelo,MAE (Train),MAE (Test),RMSE (Train),RMSE (Test),R² (Train),R² (Test),Δ RMSE (Overfit)
+Baseline (Dummy Media),11.638,11.716,14.524,14.624,0.0,-0.0,0.1
+Regresión Ridge (Optimizada),11.024,11.134,13.751,13.888,0.104,0.098,0.137
+Árbol de Decisión (max_depth=6),10.993,11.074,13.714,13.836,0.108,0.105,0.122
+Random Forest (100 árboles),10.691,11.067,13.342,13.815,0.156,0.107,0.473

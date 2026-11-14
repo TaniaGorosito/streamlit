@@ -1,0 +1,9 @@
+columna,tipo,no nulos,% nulos,únicos,ejemplo,significado,decisión tomada
+Invoice,object,1067371,0.0,53628,489434,Número de factura. El prefijo C marca una cancelación.,Se separan las cancelaciones antes de agregar.
+StockCode,object,1067371,0.0,5305,85048,Código de artículo. No todos los valores son productos.,Se clasifica por patrón y se excluyen los no-producto del análisis de canasta.
+Description,object,1062897,0.42,5697,15CM CHRISTMAS GLASS BALL 20,Descripción del artículo. Inconsistente para un mismo código.,Se normaliza a mayúsculas y se toma la moda por código.
+Quantity,int64,1067371,0.0,1057,12,Unidades de la línea. Negativa en cancelaciones y devoluciones.,Se conserva el signo; el filtro se aplica según el análisis.
+InvoiceDate,datetime64[ns],1067371,0.0,47635,2009-12-01 07:45:00,Fecha y hora de emisión de la factura.,Se convierte a datetime y se derivan mes y día de semana.
+Price,float64,1067371,0.0,2807,6.95,Precio unitario en libras esterlinas.,Se revisan los precios cero antes de calcular importes.
+Customer_ID,float64,824364,22.77,5942,13085.0,Identificador del cliente. Ausente en ventas sin registro.,Se usa dropna=False en todo groupby por cliente.
+Country,object,1067371,0.0,43,United Kingdom,"País de residencia del cliente, no del envío.",Sin cambios.
