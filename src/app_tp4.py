@@ -43,8 +43,8 @@ st.markdown(
 )
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    "1. Clasificación de Etapa (TP3)",
-    "2. Predicción de Tasa de Adopción (TP2)",
+    "1. Clasificación de Etapa",
+    "2. Predicción de Tasa de Adopción",
     "3. Segmentación por Impacto (K-Means)",
     "4. Cargar CSV y Analizar Lote",
 ])
