@@ -84,6 +84,11 @@ Huella de `diamantes` en cada modalidad (deben ser idénticas):
 |---|---|---|
 | venv | 1b8812569e371bba|53940 × 10 |
 
+## Repositorios y despliegue del equipo
+- Repositorio principal de entorno y cuadernos: https://github.com/TaniaGorosito/aa-2026-entorno
+- Repositorio público de despliegue (TP4): https://github.com/TaniaGorosito/streamlit
+- Aplicación web en producción (Streamlit Community Cloud): https://TU-URL-DE-STREAMLIT.streamlit.app
+
 ## Cuadernos del proyecto
 
 1. `notebooks/01_diccionario_ai.ipynb`: perfil y diccionario del dataset.
@@ -93,19 +98,20 @@ Huella de `diamantes` en cada modalidad (deben ser idénticas):
 5. `notebooks/05_regresion.ipynb`: línea base, Ridge, árbol y Random Forest; compara MSE, RMSE, MAE y R², y guarda el mejor pipeline para la demo.
 6. `notebooks/06_tablero_interactivo.ipynb`: tablero descriptivo.
 7. `notebooks/07_clasificacion.ipynb`: clasificadores (regresión logística, su versión ajustada, árbol, Naive Bayes, Random Forest y Dummy de referencia), validación cruzada agrupada, métricas por clase, matrices de confusión y análisis complementario de K-Means.
+8. `notebooks/08_exportar_modelos_tp4.ipynb`: entrenamiento final de los modelos seleccionados en TP2 (Regresión Ridge), TP3 (Regresión Logística multinomial balanceada) y segmentación no supervisada (K-Means con $k=3$), serializando sus parámetros y transformaciones en el artefacto ligero `modelos_tp4.joblib` para su despliegue en producción.
 
 ### Datos y ejecución
 
-El CSV original y el Parquet limpio están versionados en `proyecto_equipo/datos/crudos/` y `proyecto_equipo/datos/derivados/`. Desde la raíz del repositorio, activar el entorno e instalar las dependencias con `pip install -r requirements.txt`. Abrir Jupyter con `python -m jupyter lab` y ejecutar primero `02_limpieza_ai.ipynb`, seguido de `05_regresion.ipynb` y `07_clasificacion.ipynb`. Los gráficos y tablas de `proyecto_equipo/salidas/` se versionan junto con `modelo_regresion_tp2.joblib` y `modelo_clasificacion_tp3.joblib` para la demo.
+El CSV original y el Parquet limpio están versionados en `proyecto_equipo/datos/crudos/` y `proyecto_equipo/datos/derivados/`. Desde la raíz del repositorio, activar el entorno e instalar las dependencias con `pip install -r requirements.txt`. Abrir Jupyter con `python -m jupyter lab` y ejecutar `02_limpieza_ai.ipynb` seguido de `08_exportar_modelos_tp4.ipynb` para regenerar el artefacto `modelos_tp4.joblib` utilizado por la aplicación web.
 
-### Demostración en Streamlit
+### Demostración en Streamlit (TP4)
 
-Los modelos exportados se generaron con scikit-learn 1.8.0. Para reutilizar los archivos joblib versionados, usá esa misma versión; si cambia la versión, regenerá los modelos ejecutando los cuadernos 02, 05 y 07 en la máquina de la demo.
+El artefacto `modelos_tp4.joblib` serializa únicamente los tensores y escaladores numéricos ya entrenados (usando `numpy`, `pandas` y `joblib`), lo que garantiza compatibilidad entre entornos locales y la nube sin requerir `scipy` ni `scikit-learn` en tiempo de inferencia.
 
-Después de ejecutar los cuadernos 05 y 07, iniciar desde la raíz:
+Para ejecutar la aplicación web localmente desde la carpeta del proyecto:
 
 ```bash
-python -m streamlit run proyecto_equipo/src/app_modelos.py
+python -m streamlit run src/app_tp4.py
 ```
 
 La aplicación permite editar los predictores de una observación reservada del test y ejecutar la predicción o clasificación. Muestra la etiqueta real y el error/acierto únicamente si los campos todavía coinciden con esa fila no vista durante el entrenamiento; para entradas modificadas muestra la salida del modelo sin atribuirles una etiqueta real.
