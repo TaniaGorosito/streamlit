@@ -104,7 +104,7 @@ Huella de `diamantes` en cada modalidad (deben ser idénticas):
 
 El CSV original y el Parquet limpio están versionados en `proyecto_equipo/datos/crudos/` y `proyecto_equipo/datos/derivados/`. Desde la raíz del repositorio, activar el entorno e instalar las dependencias con `pip install -r requirements.txt`. Abrir Jupyter con `python -m jupyter lab` y ejecutar `02_limpieza_ai.ipynb` seguido de `08_exportar_modelos_tp4.ipynb` para regenerar el artefacto `modelos_tp4.joblib` utilizado por la aplicación web.
 
-### Demostración en Streamlit (TP4)
+### Demostración en Streamlit
 
 El artefacto `modelos_tp4.joblib` serializa únicamente los tensores y escaladores numéricos ya entrenados (usando `numpy`, `pandas` y `joblib`), lo que garantiza compatibilidad entre entornos locales y la nube sin requerir `scipy` ni `scikit-learn` en tiempo de inferencia.
 
