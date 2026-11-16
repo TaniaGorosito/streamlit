@@ -87,7 +87,7 @@ Huella de `diamantes` en cada modalidad (deben ser idénticas):
 ## Repositorios y despliegue del equipo
 - Repositorio principal de entorno y cuadernos: https://github.com/TaniaGorosito/aa-2026-entorno
 - Repositorio público de despliegue (TP4): https://github.com/TaniaGorosito/streamlit
-- Aplicación web en producción (Streamlit Community Cloud): https://TU-URL-DE-STREAMLIT.streamlit.app
+- Aplicación web en producción (Streamlit Community Cloud): https://adopcion-ia-unraf.streamlit.app/
 
 ## Cuadernos del proyecto
 
